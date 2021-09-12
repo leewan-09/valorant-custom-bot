@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nodemon",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "discord.js": "^13.1.0",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12"
   },
   "engines": {
     "node": "16.x"
