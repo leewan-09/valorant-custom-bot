@@ -1,11 +1,19 @@
 const Discord = require('discord.js');
 const dotenv = require('dotenv');
+var http = require('http');
 dotenv.config();
 
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 app.listen(port, () => {});
+
+setInterval(function () {
+  http.get('https://discord-valorant-custom-bot.herokuapp.com/');
+}, 300000);
 
 const client = new Discord.Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] });
 
