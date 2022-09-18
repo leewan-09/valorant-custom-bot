@@ -1,19 +1,6 @@
 const Discord = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
-const axios = require('axios');
-
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 5000;
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-app.listen(port, () => {});
-
-setInterval(function () {
-  axios.get('https://discord-valorant-custom-bot.herokuapp.com/');
-}, 300000);
 
 const client = new Discord.Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] });
 
