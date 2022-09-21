@@ -1,19 +1,27 @@
-const Discord = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const client = new Discord.Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] });
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMembers,
+  ],
+});
 
 const prefix = 'vc?';
 
 const maps = [
-  'Bind',
-  'Haven',
-  'Split',
   'Ascent',
-  'Icebox',
+  'Bind',
   'Breeze',
   'Fracture',
+  'Haven',
+  'Icebox',
+  'Pearl',
+  'Split',
 ];
 
 client.on('ready', () => {
@@ -26,10 +34,10 @@ client.on('messageCreate', (message) => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
-  if (command == 'map') {
+  if (command === 'map') {
     shuffleArray(maps);
     message.reply('**' + maps[0] + ' 🗺**');
-  } else if (command == 'teams') {
+  } else if (command === 'teams') {
     const getPlayers = message.content.split('/').splice(1);
 
     const players = getPlayers.filter(String);
@@ -45,7 +53,7 @@ client.on('messageCreate', (message) => {
     const teamA = [];
     const teamB = [];
     for (let index = 0; index < players.length; index++) {
-      if (index % 2 == 0) {
+      if (index % 2 === 0) {
         teamA.push(players[index]);
       } else {
         teamB.push(players[index]);
